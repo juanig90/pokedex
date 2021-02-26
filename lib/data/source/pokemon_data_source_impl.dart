@@ -4,7 +4,8 @@ import 'package:pokedex_app/domain/model/pokemon.dart';
 class PokemonDataSourceImpl implements PokemonDataSource {
 
   @override
-  Future<List<Pokemon>> getPokemons() {
+  Future<List<Pokemon>> getPokemons() async {
+    await Future.delayed(Duration(seconds: 5));
     return Future.value([
       Pokemon(
         id: "#001",
