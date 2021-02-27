@@ -10,8 +10,14 @@ class PokemonBloc extends ChangeNotifier {
   PokemonBloc(this._useCase);
 
   void fetchPokemons() async {
-    final pokemons = await _useCase.getPokemons();
-    state = Successful(pokemons);
-    notifyListeners();
+    try {
+      final pokemons = await _useCase.getPokemons();
+      state = Successful(pokemons);
+    } catch (e) {
+      state = Error();
+    } finally {
+      notifyListeners();
+    }
+
   }
 }
