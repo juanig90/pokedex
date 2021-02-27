@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 
 class Pokemon {
-  final String id;
   final String name;
-  final String imageUrl;
+  final String url;
 
   Pokemon({
-    @required this.id,
     @required this.name,
-    @required this.imageUrl,
+    @required this.url,
   });
+
+  factory Pokemon.fromJson(Map<String, dynamic> json) {
+      return Pokemon(
+        name: json['name'],
+        url: json['url']
+      );
+  }
+
+  static List<Pokemon> parseJsonList(Iterable list) {
+     return list.map((e) => Pokemon.fromJson(e)).toList();
+  }
+
 }
