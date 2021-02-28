@@ -20,4 +20,11 @@ class Pokemon {
      return list.map((e) => Pokemon.fromJson(e)).toList();
   }
 
+  String get imageUrl {
+    var imageBaseUrl = "https://pokeres.bastionbot.org/images/pokemon/";
+    var id = url.split("/").reversed.skip(1).first;
+    var imageUrl = "$imageBaseUrl$id.png";
+    return imageUrl;
+  }
+
 }

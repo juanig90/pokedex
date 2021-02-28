@@ -3,7 +3,7 @@ import 'package:pokedex_app/data/repository/pokemon_repository_impl.dart';
 import 'package:pokedex_app/data/source/pokemon_data_source_impl.dart';
 import 'package:pokedex_app/domain/usecase/get_pokemons_use_case_impl.dart';
 import 'package:pokedex_app/presentation/bloc/pokemon_bloc.dart';
-import 'package:pokedex_app/presentation/widget/pokemon_list_widget.dart';
+import 'package:pokedex_app/presentation/widget/pokemon_grid_widget.dart';
 import 'package:provider/provider.dart';
 
 import 'bloc/pokemon_state.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is Successful) {
-                return PokemonListWidget(pokemons: state.pokemon);
+                return PokemonGridWidget(pokemons: state.pokemon);
               } else if (state is Error) {
                 return Text(' Error');
               } else {
