@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is Successful) {
-                return PokemonGridWidget(pokemons: state.pokemon);
+                return PokemonGridWidget(state.pokemon);
               } else if (state is Error) {
                 return Text(' Error');
               } else {
