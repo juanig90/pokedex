@@ -11,20 +11,34 @@ class PokemonGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: 5.0, crossAxisCount: 2),
+          mainAxisSpacing: 8.0,
+          crossAxisSpacing: 8.0,
+          crossAxisCount: 2,
+          childAspectRatio: MediaQuery.of(context).size.height / 800
+        ),
         itemCount: _pokemons.length,
         itemBuilder: (context, index) {
-          return Center(
-            child: Column(
-              children: [
-                Expanded(
-                  child: Image.network(_pokemons[index].imageUrl),
-                ),
-                Text(
-                  _pokemons[index].name,
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-              ],
+          return Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Image.network(_pokemons[index].imageUrl),
+                  ),
+                  Spacer(
+                    flex: 1,
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      _pokemons[index].name,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         });

@@ -38,7 +38,13 @@ class MyApp extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is Successful) {
-                return PokemonGridWidget(state.pokemon);
+                return Container(
+                  color: Colors.black87,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: PokemonGridWidget(state.pokemon),
+                  ),
+                );
               } else if (state is Error) {
                 return Text(' Error');
               } else {
