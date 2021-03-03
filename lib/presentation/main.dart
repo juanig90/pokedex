@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_app/data/repository/pokemon_repository_impl.dart';
-import 'package:pokedex_app/data/source/pokemon_data_source_impl.dart';
-import 'package:pokedex_app/domain/usecase/get_pokemons_use_case_impl.dart';
 import 'package:pokedex_app/presentation/bloc/pokemon_bloc.dart';
 import 'package:pokedex_app/presentation/widget/pokemon_grid_widget.dart';
 import 'package:provider/provider.dart';
-
 import 'bloc/pokemon_state.dart';
+import 'package:pokedex_app/injection_container.dart' as di;
 
 void main() {
-
-  // ToDo This will be provided by get it
-
-  final dataSource = PokemonDataSourceImpl();
-  final repository = PokemonRepositoryImpl(pokemonDataSource: dataSource);
-  final useCase = GetPokemonUseCaseImpl(repository);
-
+  di.init();
   runApp(
     ChangeNotifierProvider(
-      create: (context) => PokemonBloc(useCase),
+      create: (context) => di.getIt<PokemonBloc>(),
       child: MyApp(),
     ),
   );
