@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Provider.of<PokemonBloc>(context).fetchPokemons();
+    Provider.of<PokemonBloc>(context, listen: false).fetchPokemons();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
