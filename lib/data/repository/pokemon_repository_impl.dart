@@ -8,5 +8,5 @@ class PokemonRepositoryImpl implements PokemonRepository {
   PokemonRepositoryImpl(this.pokemonDataSource);
 
   @override
-  Future<List<Pokemon>> getPokemons() => pokemonDataSource.getPokemons();
+  Future<List<Pokemon>> getPokemons({offset = 0 , limit = 100}) => pokemonDataSource.getPokemons(offset: offset, limit: limit);
 }

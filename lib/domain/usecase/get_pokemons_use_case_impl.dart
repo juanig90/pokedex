@@ -11,5 +11,5 @@ class GetPokemonUseCaseImpl implements GetPokemonsUseCase {
   GetPokemonUseCaseImpl(this.pokemonRepository);
 
   @override
-  Future<List<Pokemon>> getPokemons() => pokemonRepository.getPokemons();
+  Future<List<Pokemon>> getPokemons({offset = 0, limit = 100}) => pokemonRepository.getPokemons(offset: offset, limit: limit);
 }

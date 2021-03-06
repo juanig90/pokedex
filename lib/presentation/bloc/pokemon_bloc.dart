@@ -1,23 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:pokedex_app/domain/model/pokemon.dart';
 import 'package:pokedex_app/domain/usecase/get_pokemons_use_case.dart';
-import 'package:pokedex_app/presentation/bloc/pokemon_state.dart';
-import 'pokemon_state.dart';
 
-class PokemonBloc extends ChangeNotifier {
+class PokemonBloc {
   final GetPokemonsUseCase _useCase;
-  PokemonState state = Loading();
 
   PokemonBloc(this._useCase);
 
-  void fetchPokemons() async {
-    try {
-      final pokemons = await _useCase.getPokemons();
-      state = Successful(pokemons);
-    } catch (e) {
-      state = Error();
-    } finally {
-      notifyListeners();
-    }
-
-  }
+  Future<List<Pokemon>> getPokemons({int pageKey = 0, int limit = 100}) async =>
+      await _useCase.getPokemons(offset: pageKey, limit: limit);
 }

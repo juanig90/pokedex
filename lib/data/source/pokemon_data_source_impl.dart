@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 class PokemonDataSourceImpl implements PokemonDataSource {
 
   @override
-  Future<List<Pokemon>> getPokemons() async {
-    final response = await http.get('https://pokeapi.co/api/v2/pokemon');
+  Future<List<Pokemon>> getPokemons({offset = 0, limit = 100}) async {
+    final response = await http.get('https://pokeapi.co/api/v2/pokemon?offset=$offset&limit=$limit');
     if (response.statusCode == 200) {
       var body = response.body;
       var jsonDecoded = jsonDecode(body);
