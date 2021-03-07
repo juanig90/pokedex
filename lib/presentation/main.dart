@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_app/presentation/widget/pokemon_grid_widget.dart';
+import 'package:pokedex_app/presentation/pages/pokemons_page.dart';
 import 'package:pokedex_app/injection_container.dart' as di;
 
 void main() {
@@ -17,12 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Pokedex'),
-        ),
-        body: PokemonGridWidget(),
-      ),
+      home: PokemonsPage()
     );
   }
 }
