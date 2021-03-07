@@ -6,12 +6,15 @@ import 'package:pokedex_app/domain/repository/pokemon_repository.dart';
 import 'package:pokedex_app/domain/usecase/get_pokemons_use_case.dart';
 import 'package:pokedex_app/domain/usecase/get_pokemons_use_case_impl.dart';
 import 'package:pokedex_app/presentation/bloc/pokemon_bloc.dart';
+import 'package:pokedex_app/presentation/bloc/pokemon_detail_bloc.dart';
 
 final getIt = GetIt.instance;
 
 void init() {
 
   getIt.registerFactory(() => PokemonBloc(getIt()));
+
+  getIt.registerFactory(() => PokemonDetailBloc(getIt()));
 
   getIt.registerLazySingleton<GetPokemonsUseCase>(() => GetPokemonUseCaseImpl(getIt()));
 

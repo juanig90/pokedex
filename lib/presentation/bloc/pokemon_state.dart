@@ -1,4 +1,4 @@
-import 'package:pokedex_app/domain/model/pokemon.dart';
+import 'package:pokedex_app/domain/model/pokemon_detail.dart';
 
 abstract class PokemonState {}
 
@@ -6,7 +6,7 @@ class Loading extends PokemonState {}
 
 class Successful extends PokemonState {
 
-  final List<Pokemon> pokemon;
+  final PokemonDetail pokemon;
 
   Successful(this.pokemon);
 
