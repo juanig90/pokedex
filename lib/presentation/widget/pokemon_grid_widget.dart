@@ -7,6 +7,10 @@ import 'package:pokedex_app/injection_container.dart' as di;
 
 class PokemonGridWidget extends StatefulWidget {
 
+  final Function(Pokemon pokemon) onTap;
+
+  PokemonGridWidget(this.onTap);
+
   @override
   State<StatefulWidget> createState() {
     return _PokemonGridState();
@@ -39,26 +43,29 @@ class _PokemonGridState extends State<PokemonGridWidget> {
           childAspectRatio: MediaQuery.of(context).size.height / 800),
       builderDelegate: PagedChildBuilderDelegate<Pokemon>(
         itemBuilder: (context, item, index) {
-          return Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Image.network(item.imageUrl),
-                  ),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Text(
-                     item.name,
-                      style: Theme.of(context).textTheme.headline6,
+          return InkWell(
+            onTap: () => widget.onTap(item),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Image.network(item.imageUrl),
                     ),
-                  ),
-                ],
+                    Spacer(
+                      flex: 1,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                       item.name,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
