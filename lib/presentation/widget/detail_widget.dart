@@ -3,6 +3,7 @@ import 'package:pokedex_app/domain/model/pokemon.dart';
 import 'package:pokedex_app/presentation/bloc/pokemon_detail_bloc.dart';
 import 'package:pokedex_app/presentation/bloc/pokemon_state.dart';
 import 'package:provider/provider.dart';
+import 'stat_widget.dart';
 
 class DetailWidget extends StatefulWidget {
   final Pokemon _pokemon;
@@ -33,7 +34,29 @@ class _DetailState extends State<DetailWidget> {
             child: CircularProgressIndicator(),
           );
         else if (bloc.state is Successful) {
-          return Text('Successful');
+          return Container(
+            color: Colors.black12,
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        StatWidget('HP'),
+                        StatWidget('ATK'),
+                        StatWidget('DEF'),
+                        StatWidget('SPD'),
+                        StatWidget('EXP'),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
         } else {
           return Text('Unknown');
         }
