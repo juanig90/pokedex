@@ -16,6 +16,13 @@ class DetailPokemonPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 200,
+        leading: Align(
+          alignment: Alignment.topLeft,
+          child: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () =>  Navigator.pop(context),
+          ),
+        ),
         flexibleSpace: Hero(
           tag: "pokemon",
           child: Image.network(_pokemon.imageUrl),
